@@ -6,11 +6,55 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
+      <button type="button" class="btn btn-lg btn-outline-secondary float-right" data-toggle="modal"
+        data-target="#helpModal">
+        <i class="fa fa-info"></i>
+      </button>
       <h1><i class="fa fa-paper-plane"></i> Portfolios</h1>
     </div>
   </div>
   <hr>
+
+  <!-- Help modal -->
+  <div class="modal fade" id="helpModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <h1 class="display-5"><i class="fa fa-paper-plane"></i> Portfolios</h1>
+          <p class="lead">One place to store all your files.</p>
+          <hr class="my-4">
+          <p>A central location to track and organise your application files.</p>
+          <p>This is where you can upload and update all necessary files for your application</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   {% if portfolios.length %}
+
+  <link rel="stylesheet" href="/static/css/form-control-borderless.css">
+  <div class="row justify-content-left">
+    <div class="col-12 col-md-10 col-lg-8">
+      <form class="card">
+        <div class="card-body row no-gutters align-items-center">
+          <div class="col-auto">
+            <i class="fas fa-search h4 text-body">
+            </i>
+          </div>
+          <div class="col">
+            <input id="myInput" class="form-control form-control-lg form-control-borderless" type="search"
+              placeholder="Search for student usernames or numbers">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div> <!-- End of input-->
+
+  <br>
+
   <div class="row text-center">
     {% for portfolio in portfolios %}
     <div class="col-12 col-md-4">
@@ -24,23 +68,16 @@
   {% endfor %}
 </div>
 {% else %}
+<!-- Default view if no portfolios present-->
 <div class="jumbotron">
   <h1 class="display-4 text-center">Introducing portfolios!</h1>
-  <p class="lead text-center">A portfolio is simple: it's a folder for each student to upload and track their admission documents.
+  <p class="lead text-center">A portfolio is simple: it's a folder for each student to upload and track their admission
+    documents.
   </p>
   <hr class="my-4 text-center">
   <p>You can view, download and organise documents here, to be prepared for your application.</p>
 </div>
 {% endif %}
-
-
-
 </div>
-
-
-
-<script>
-  $(function () { $('[data-toggle="popover"]').popover() })
-</script>
 
 {% endblock %}
